@@ -81,7 +81,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:background="@android:color/holo_green_light"
+        android:background="#4DB6AC"
         android:fontFamily="@font/aclonica"
         android:text="Login"
         android:textSize="13sp"
