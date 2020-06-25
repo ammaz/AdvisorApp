@@ -1,8 +1,11 @@
 package net.smallacademy.authenticatorapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -13,8 +16,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Objects;
 
 
 /**
@@ -25,9 +39,12 @@ public class CreateBatchFrag extends Fragment {
     private static final String TAG = "Create New Batch";
 
     EditText etCreateBatch;
-    Button btnCreateBatch;
+    Button btnCreatebatch,Button2;
     FirebaseDatabase myFirebase;
     DatabaseReference mRef;
+    FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
+    String userID;
 
     public CreateBatchFrag() {
         // Required empty public constructor
@@ -41,27 +58,46 @@ public class CreateBatchFrag extends Fragment {
         View view = inflater.inflate(R.layout.fragment_create_batch, container, false);
 
         etCreateBatch = view.findViewById(R.id.etCreateBatch);
-        btnCreateBatch = view.findViewById(R.id.btnCreateBatch);
+        btnCreatebatch = view.findViewById(R.id.btnCreateBatch);
         myFirebase = FirebaseDatabase.getInstance();
         mRef = myFirebase.getReference("Batches");
+        Button2=view.findViewById(R.id.button2);
 
-        btnCreateBatch.setOnClickListener(new View.OnClickListener() {
+        Button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d(TAG,"onClick: capturing input");
-                String batchName = etCreateBatch.getText().toString().trim();
-                String id = mRef.push().getKey();
-                if(!batchName.equals("")){
-
-                    mRef.child(id).setValue(batchName);
-                    Toast.makeText(getActivity(), "Batch created successfully", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Enter Batch Name", Toast.LENGTH_SHORT).show();
-                }
+                Toast.makeText(getActivity(), "Batch Created", Toast.LENGTH_SHORT).show();
+            }
+        });
 
 
+        btnCreatebatch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final String BatchName = etCreateBatch.getText().toString().trim();
+
+                Toast.makeText(getActivity(), "Batch Created", Toast.LENGTH_SHORT).show();
+                userID = Objects.requireNonNull(fAuth.getCurrentUser()).getProviderId();
+                CollectionReference documentReference = fStore.collection("users").document(userID).collection("Batches");
+                Map<String, Object> user = new HashMap<>();
+                user.put("BatchName", BatchName);
+                documentReference.add(user).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                    @Override
+                    public void onSuccess(DocumentReference documentReference) {
+                        Log.d(TAG, "onSuccess: Batch is created for " + userID);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d(TAG, "onFailure: " + e.toString());
+                    }
+                });
             }
         });
         return view;
     }
 }
+
+
+

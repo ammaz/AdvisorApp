@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/asd"
+        tools:ignore="MissingConstraints"
+        android:layout_above="@+id/batchList"
+        android:layout_alignParentTop="true"/>
 
     <Button
         android:id="@+id/btnNewBatch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New  Batch"
+        android:text="New Batch"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.702"
         app:layout_constraintStart_toStartOf="parent"

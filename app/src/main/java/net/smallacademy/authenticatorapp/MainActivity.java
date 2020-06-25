@@ -1,6 +1,7 @@
 package net.smallacademy.authenticatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -32,8 +33,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CreateBatchFrag dialogPopUP = new CreateBatchFrag();
-                Dialog.setContentView(R.layout.fragment_create_batch);
-                Dialog.show();
+                /*Dialog.setContentView(R.layout.fragment_create_batch);
+                Dialog.show();*/
+                CreateBatchFrag dialogFragment = new CreateBatchFrag();
+
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+                ft.replace(R.id.asd, dialogFragment);
+                ft.commit();
             }
         });
         btnProfile.setOnClickListener(new View.OnClickListener() {
