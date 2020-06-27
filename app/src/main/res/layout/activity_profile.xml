@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".ProfileActivity"
+    android:background="#FBFFF1">
 
 
     <Button
@@ -13,14 +14,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#4DB6AC"
+        android:background="@drawable/custom_button"
         android:onClick="logout"
         android:text="Logout"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal" />
+        app:layout_constraintTop_toBottomOf="@+id/resetPasswordLocal"/>
 
     <ImageView
         android:id="@+id/profileImage"
@@ -83,7 +84,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:text="Email Not Verfied !"
-        android:textColor="#4DB6AC"
+        android:textColor="#000000"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -99,6 +100,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/custom_button"
         app:layout_constraintTop_toBottomOf="@+id/verifyMsg" />
 
     <Button
@@ -107,7 +109,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#4DB6AC"
+        android:background="@drawable/custom_button"
         android:text="Reset Password"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +187,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:background="#4DB6AC"
+        android:background="@drawable/custom_button"
         android:text="Change Profile"
         app:layout_constraintBottom_toBottomOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"

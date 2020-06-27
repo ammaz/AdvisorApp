@@ -7,7 +7,8 @@
     android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".BatchActivity">
+    tools:context=".BatchActivity"
+    android:background="#FBFFF1">
 
 
     <Button
@@ -15,19 +16,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Add Students" />
+        android:text="Add Students"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:id="@+id/btnChat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Chat" />
+        android:text="Chat"
+        android:background="@drawable/custom_button"/>
 
     <Button
         android:id="@+id/btnFAQs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="FAQs" />
+        android:text="FAQs"
+        android:background="@drawable/custom_button"/>
 
 </LinearLayout>
