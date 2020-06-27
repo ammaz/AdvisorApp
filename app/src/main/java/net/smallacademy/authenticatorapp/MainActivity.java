@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 
@@ -28,7 +29,7 @@ import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btnProfile;
+    ImageButton btnProfile;
     FloatingActionButton btnNewBatch;
     Dialog Dialog;
     RecyclerView batchList;
