@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,16 +9,18 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#4DB6AC">
+        android:background="#FBFFF1"
+        app:cardBackgroundColor="#FBFFF1">
 
 
         <TextView
             android:id="@+id/tvRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="12sp"
+            android:layout_marginBottom="12sp"
+            android:layout_marginEnd="12sp"
             android:background="#4DB6AC"
             android:backgroundTint="#4DB6AC"
             android:shadowColor="#4DB6AC"
