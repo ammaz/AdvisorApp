@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
     BatchNameAdapter adapter;
     TextView tvEmptyRecycler;
 
-    FirebaseDatabase myFirebase;
-    DatabaseReference mRef;
 
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -51,9 +49,6 @@ public class MainActivity extends AppCompatActivity {
         btnProfile = findViewById(R.id.btnProfile);
         tvEmptyRecycler = findViewById(R.id.tvEmptyRecycler);
         btnNewBatch = findViewById(R.id.btnNewBatch);
-
-        myFirebase = FirebaseDatabase.getInstance();
-        mRef = myFirebase.getReference("Batches");
 
 
 

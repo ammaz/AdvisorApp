@@ -2,7 +2,9 @@ package net.smallacademy.authenticatorapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 
 public class BatchActivity extends AppCompatActivity {
@@ -17,5 +19,11 @@ public class BatchActivity extends AppCompatActivity {
         btnChat = findViewById(R.id.btnChat);
         btnFAQs = findViewById(R.id.btnFAQs);
 
+        btnAddStudents.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(BatchActivity.this,AddStudentActivity.class));
+            }
+        });
     }
 }
