@@ -56,7 +56,7 @@ public class BatchNameAdapter extends FirestoreRecyclerAdapter<BatchNames, Batch
         }
     }
     public interface OnItemClickListener {
-        void onItemClick(DocumentSnapshot documentSnapshot,int positoin);
+        void onItemClick(DocumentSnapshot documentSnapshot,int position);
     }
     public void setOnItemClickListener(OnItemClickListener listener){
         this.listener = listener;

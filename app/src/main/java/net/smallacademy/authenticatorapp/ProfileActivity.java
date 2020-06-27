@@ -16,8 +16,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -42,6 +44,7 @@ public class ProfileActivity extends AppCompatActivity { //aur sab khairiyat?
     FirebaseUser user;
     ImageView profileImage;
     StorageReference storageReference;
+    UserModel userModel = new UserModel();
 
 
     @Override
@@ -101,21 +104,44 @@ public class ProfileActivity extends AppCompatActivity { //aur sab khairiyat?
 
 
 
-
         DocumentReference documentReference = fStore.collection("users").document(userId);
+//        documentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                userModel = documentSnapshot.toObject(UserModel.class);
+//                phone.setText(userModel.getPhone());
+//                    fullName.setText(userModel.getName());
+//                    email.setText(userModel.getEmail());
+//            }
+//        });
+
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
-                if(documentSnapshot.exists()){
-                    phone.setText(documentSnapshot.getString("phone"));
-                    fullName.setText(documentSnapshot.getString("fName"));
-                    email.setText(documentSnapshot.getString("email"));
-
-                }else {
-                    Log.d("tag", "onEvent: Document do not exists");
+                if (documentSnapshot.exists()) {
+                    userModel = documentSnapshot.toObject(UserModel.class);
+                    phone.setText(userModel.getPhone());
+                    fullName.setText(userModel.getName());
+                    email.setText(userModel.getEmail());
                 }
+
             }
         });
+
+//        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+//            @Override
+//            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+//                if(documentSnapshot.exists()){
+//                    userModel = (UserModel) documentSnapshot.get("fName");
+//                //    phone.setText(documentSnapshot.getString("phone"));
+//                //    fullName.setText(documentSnapshot.getString("fName"));
+//                 //   email.setText(documentSnapshot.getString("email"));
+//
+//                }else {
+//                    Log.d("tag", "onEvent: Document do not exists");
+//                }
+//            }
+//        });
 
 
         resetPassLocal.setOnClickListener(new View.OnClickListener() {
