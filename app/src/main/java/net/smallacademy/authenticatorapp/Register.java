@@ -21,9 +21,12 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.lang.ref.Reference;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -125,7 +128,33 @@ public class Register extends AppCompatActivity {
                                     Log.d(TAG, "onFailure: " + e.toString());
                                 }
                             });
+
+                            // Fatima Start >..
+
+
+                            DatabaseReference reference=FirebaseDatabase.getInstance().getReference("Users").child(userID);
+                            HashMap<String,String> hashMap=new HashMap<>();
+                            hashMap.put("name",fullName);
+                            hashMap.put("Email",email);
+                            hashMap.put("id",userID);
+                            hashMap.put("image","default");
+
+                            reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                    {
+                                        Toast.makeText(Register.this, "oho", Toast.LENGTH_SHORT).show();
+                                    //    startActivity(obj);
+                                    }
+                                }
+                            });
+
+                            // ^ Fatima end <..
+
+
                             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
 
                         }else {
                             Toast.makeText(Register.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();

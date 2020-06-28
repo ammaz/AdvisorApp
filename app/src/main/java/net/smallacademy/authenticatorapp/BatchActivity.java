@@ -27,5 +27,13 @@ public class BatchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(BatchActivity.this,Activity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

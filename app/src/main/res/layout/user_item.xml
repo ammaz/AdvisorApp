@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="5dp"
+    cardview:cardCornerRadius="5dp"
+    cardview:cardUseCompatPadding="false"
+    android:layout_margin="5dp"
+    android:background="#6f6f6f"
+    >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:src="@mipmap/ic_launcher" />
+
+
+        <TextView
+            android:id="@+id/tvuser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="username"
+            android:textStyle="bold"
+            android:layout_toRightOf="@id/profileImage"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvuser"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="1dp"
+            android:text="id"
+            android:layout_toRightOf="@id/profileImage"
+            android:textSize="14sp" />
+        <TextView
+            android:id="@+id/tvlastmesg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvid"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="5dp"
+            android:text="last mesg"
+            android:layout_toRightOf="@id/profileImage"
+            android:textSize="14sp"
+            android:maxLines="1"/>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_on"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/tvuser"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/profileImage"
+            android:layout_toRightOf="@id/profileImage"
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="gone"
+            app:civ_border_color="#05df29"
+            app:civ_border_width="10dp"
+            android:layout_marginBottom="10dp"
+
+            />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_off"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/tvuser"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginTop="10dp"
+            android:layout_toEndOf="@id/profileImage"
+            android:layout_toRightOf="@id/profileImage"
+            android:src="@mipmap/ic_launcher_round"
+            android:visibility="gone"
+            app:civ_border_color="@color/bluegrey"
+            app:civ_border_width="10dp"
+            android:layout_marginBottom="10dp"
+
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
+</androidx.cardview.widget.CardView>
