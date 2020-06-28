@@ -22,7 +22,9 @@ public class BatchActivity extends AppCompatActivity {
         btnAddStudents.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(BatchActivity.this,AddStudentActivity.class));
+                Intent intent = new Intent(BatchActivity.this,AddStudentActivity.class);
+                intent.putExtra("batchID",getIntent().getStringExtra("batchID"));
+                startActivity(intent);
             }
         });
     }

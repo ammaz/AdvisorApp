@@ -105,7 +105,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int positoin) {
               //  BatchNames batchNames = documentSnapshot.toObject(BatchNames.class);
-                startActivity(new Intent(MainActivity.this, BatchActivity.class));
+                Intent intent = new Intent(MainActivity.this, BatchActivity.class);
+                intent.putExtra("batchID",documentSnapshot.getId());
+                startActivity(intent);
             }
         });
     }

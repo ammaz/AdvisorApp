@@ -7,7 +7,9 @@ import android.widget.TextView;
 
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,6 +23,9 @@ public class BatchNameAdapter extends FirestoreRecyclerAdapter<BatchNames, Batch
 
     @Override
     protected void onBindViewHolder(@NonNull BatchNameViewHolder holder, int position, @NonNull BatchNames model) {
+        FirebaseFirestore.getInstance().collection("Batches");
+
+
         holder.tvRecycler.setText(model.getBatchName());
     }
 
@@ -48,6 +53,7 @@ public class BatchNameAdapter extends FirestoreRecyclerAdapter<BatchNames, Batch
                     int position = getAdapterPosition();
                     if(position != RecyclerView.NO_POSITION && listener != null){
                         listener.onItemClick(getSnapshots().getSnapshot(position),position);
+
                     }
 
                 }
