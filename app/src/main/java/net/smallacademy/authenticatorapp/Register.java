@@ -142,10 +142,11 @@ public class Register extends AppCompatActivity {
                             reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful())
-                                    {
-                                        Toast.makeText(Register.this, "oho", Toast.LENGTH_SHORT).show();
-                                    //    startActivity(obj);
+                                    if(task.isSuccessful()) {
+
+                                        //    startActivity(obj);
+                                    }else {
+                                        Toast.makeText(Register.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
                                 }
                             });

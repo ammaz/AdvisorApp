@@ -1,6 +1,7 @@
 package net.smallacademy.authenticatorapp;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,8 +24,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView batchList;
     BatchNameAdapter adapter;
     TextView tvEmptyRecycler;
+
+    String batchid;
 
 
     FirebaseAuth fAuth;
@@ -105,11 +111,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(DocumentSnapshot documentSnapshot, int positoin) {
               //  BatchNames batchNames = documentSnapshot.toObject(BatchNames.class);
-                Intent intent = new Intent(MainActivity.this, BatchActivity.class);
-                intent.putExtra("batchID",documentSnapshot.getId());
-                startActivity(intent);
+
+                DocumentReference ref = FirebaseFirestore.getInstance().collection("Batches").document(documentSnapshot.getId()).collection("Students").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        AddStudentModel model = documentSnapshot.toObject(AddStudentModel.class);
+                        if(model.getStatus().equals("Student")){
+                            Intent intent = new Intent(MainActivity.this,Activity.class);
+                            startActivity(intent);
+                        } else {
+
+                        }
+                    }
+                });
+                batchid = documentSnapshot.getId();
+
+                ref.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                        AddStudentModel model = documentSnapshot.toObject(AddStudentModel.class);
+                        if(model.getStatus().equals("Advisor")){
+                            Intent intent = new Intent(MainActivity.this, BatchActivity.class);
+                            intent.putExtra("batchID",batchid);
+                            startActivity(intent);
+                        }
+                    }
+                });
+
+//                if(model == null) {
+//
+//                } else if(model.getStatus().equals("Advisor")){
+//                    Intent intent = new Intent(MainActivity.this, BatchActivity.class);
+//                    intent.putExtra("batchID", documentSnapshot.getId());
+//                    startActivity(intent);
+//                }
+
+
             }
         });
+
     }
 
     @Override
