@@ -19,7 +19,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:theme="@style/Theme.AppCompat.Light"
-            app:popupTheme="@style/menustyle">
+            app:popupTheme="@style/menustyle"
+            android:background="#4DB6AC">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profileMesg"

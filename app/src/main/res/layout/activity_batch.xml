@@ -31,7 +31,8 @@
         android:id="@+id/btnFAQs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         android:text="FAQs"
-        android:background="@drawable/custom_button"/>
+        android:visibility="gone" />
 
 </LinearLayout>

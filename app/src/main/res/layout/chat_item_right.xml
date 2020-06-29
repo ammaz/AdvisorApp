@@ -21,7 +21,7 @@
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/background_right"
+            android:background="#4DB6AC"
             android:text=" heloo "
             android:layout_alignParentEnd="true"
             android:textSize="18sp"

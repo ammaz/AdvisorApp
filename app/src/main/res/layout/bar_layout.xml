@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/toolbar"
-    android:background="@color/colorPrimaryDark"
+    android:background="#4DB6AC"
     android:theme="@style/Theme.AppCompat.Light.NoActionBar"
     app:popupTheme="@style/menustyle"
     >

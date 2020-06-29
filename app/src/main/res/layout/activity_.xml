@@ -18,7 +18,8 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             app:titleTextColor="@android:color/white"
-            android:theme="@style/Theme.AppCompat.Light">
+            android:theme="@style/Theme.AppCompat.Light"
+            android:background="#4DB6AC">
 <!--            app:popupTheme="@style/menustyle">-->
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -43,7 +44,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/tablayout"
             app:tabTextColor="@android:color/white"
-            android:background="@color/colorPrimaryDark"/>
+            android:background="#4DB6AC"/>
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.viewpager.widget.ViewPager
