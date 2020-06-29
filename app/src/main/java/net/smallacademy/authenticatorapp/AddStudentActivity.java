@@ -58,7 +58,6 @@ public class AddStudentActivity extends AppCompatActivity {
     private void setUpRecyclerView() {
         collectionReference = fStore.collection("users");
         Query query = collectionReference;
-        Toast.makeText(AddStudentActivity.this, "fgmldfjl", Toast.LENGTH_SHORT).show();
 
         FirestoreRecyclerOptions<UserModel> options = new FirestoreRecyclerOptions.Builder<UserModel>().setQuery(query,UserModel.class).build();
         adapter = new AddStudentAdapter(options,batchID,this);
