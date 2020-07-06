@@ -52,6 +52,7 @@ public class Activity extends AppCompatActivity {
 
         toolbar=findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setTitle("Chat");
         //auto login log out and user name display on toolbr
         profile=findViewById(R.id.profile);
         tvprofile=findViewById(R.id.userName);
